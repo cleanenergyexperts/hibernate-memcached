@@ -51,7 +51,7 @@
 
 	<!-- @see https://github.com/arey/maven-config-github-cloudbees/blob/master/pom.xml -->
 	<distributionManagement>
-		<downloadUrl>https://github.com:cleanenergyexperts/aws-parent</downloadUrl>
+		<downloadUrl>https://github.com:cleanenergyexperts/hibernate-memcached</downloadUrl>
 		<snapshotRepository>
 			<id>cee.forge.cloudbees.com-snapshots</id>
 			<name>cee.forge.cloudbees.com-snapshots</name>
