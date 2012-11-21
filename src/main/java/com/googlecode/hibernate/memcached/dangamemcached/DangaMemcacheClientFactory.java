@@ -1,8 +1,8 @@
 package com.googlecode.hibernate.memcached.dangamemcached;
 
-import com.danga.MemCached.ErrorHandler;
-import com.danga.MemCached.MemCachedClient;
-import com.danga.MemCached.SockIOPool;
+import com.whalin.MemCached.ErrorHandler;
+import com.whalin.MemCached.MemCachedClient;
+import com.whalin.MemCached.SockIOPool;
 import com.googlecode.hibernate.memcached.Memcache;
 import com.googlecode.hibernate.memcached.MemcacheClientFactory;
 import com.googlecode.hibernate.memcached.PropertiesHelper;
@@ -10,6 +10,7 @@ import org.hibernate.cache.CacheException;
 
 /**
  * DOCUMENT ME!
+ * 
  *
  * @author George Wei
  */

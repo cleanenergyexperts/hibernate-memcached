@@ -1,7 +1,7 @@
 package com.googlecode.hibernate.memcached.dangamemcached;
 
-import com.danga.MemCached.ErrorHandler;
-import com.danga.MemCached.MemCachedClient;
+import com.whalin.MemCached.ErrorHandler;
+import com.whalin.MemCached.MemCachedClient;
 import com.googlecode.hibernate.memcached.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
