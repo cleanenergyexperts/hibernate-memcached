@@ -9,6 +9,12 @@
 	<url>https://github.com/cleanenergyexperts/hibernate-memcached</url>
 	<packaging>jar</packaging>
 
+	<properties>
+		<gmaven.version>1.4</gmaven.version>
+		<groovy.version>1.8.5</groovy.version>
+		<junit.version>4.8.2</junit.version>
+	</properties>
+
 	<developers>
 		<developer>
 			<name>Ray Krueger</name>
@@ -43,35 +49,25 @@
 		<url>https://github.com/cleanenergyexperts/hibernate-memcached</url>
 	</scm>
 
-	<properties>
-		<gmaven.version>1.4</gmaven.version>
-		<groovy.version>1.8.5</groovy.version>
-		<junit.version>4.8.2</junit.version>
-	</properties>
-
-	<!-- @see https://github.com/arey/maven-config-github-cloudbees/blob/master/pom.xml -->
 	<distributionManagement>
-		<downloadUrl>https://github.com:cleanenergyexperts/hibernate-memcached</downloadUrl>
-		<snapshotRepository>
-			<id>cee.forge.cloudbees.com-snapshots</id>
-			<name>cee.forge.cloudbees.com-snapshots</name>
-			<url>dav:https://repository-cee.forge.cloudbees.com/snapshot/</url>
-		</snapshotRepository>
 		<repository>
-			<id>cee.forge.cloudbees.com-releases</id>
-			<name>cee.forge.cloudbees.com-releases</name>
-			<url>dav:https://repository-cee.forge.cloudbees.com/release/</url>
+			<id>aws-release</id>
+			<name>AWS Release Repository</name>
+			<url>s3://maven.leadoperations.co/release</url>
 		</repository>
+		<snapshotRepository>
+			<id>aws-snapshot</id>
+			<name>AWS Snapshot Repository</name>
+			<url>s3://maven.leadoperations.co/snapshot</url>
+		</snapshotRepository>
 	</distributionManagement>
 
 	<build>
 		<extensions>
-			<!-- Extension required to deploy a snapshot or a release to the CloudBees 
-				remote maven repository using Webdav -->
 			<extension>
-				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-webdav</artifactId>
-				<version>1.0-beta-2</version>
+				<groupId>org.springframework.build</groupId>
+				<artifactId>aws-maven</artifactId>
+				<version>5.0.0.RELEASE</version>
 			</extension>
 		</extensions>
 		<plugins>
@@ -121,42 +117,6 @@
 						<descriptorRef>src</descriptorRef>
 					</descriptorRefs>
 				</configuration>
-			</plugin>
-			<!-- Allow writing tests in Groovy: -->
-			<plugin>
-				<groupId>org.codehaus.gmaven</groupId>
-				<artifactId>gmaven-plugin</artifactId>
-				<version>${gmaven.version}</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>generateTestStubs</goal>
-							<goal>testCompile</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<providerSelection>1.7</providerSelection>
-					<source>src/main/groovy</source>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.codehaus.gmaven.runtime</groupId>
-						<artifactId>gmaven-runtime-1.7</artifactId>
-						<version>${gmaven.version}</version>
-						<exclusions>
-							<exclusion>
-								<groupId>org.codehaus.groovy</groupId>
-								<artifactId>groovy-all</artifactId>
-							</exclusion>
-						</exclusions>
-					</dependency>
-					<dependency>
-						<groupId>org.codehaus.groovy</groupId>
-						<artifactId>groovy-all</artifactId>
-						<version>${groovy.version}</version>
-					</dependency>
-				</dependencies>
 			</plugin>
 		</plugins>
 	</build>
@@ -222,12 +182,6 @@
 			<groupId>hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
 			<version>1.8.0.7</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.groovy</groupId>
-			<artifactId>groovy-all</artifactId>
-			<version>${groovy.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
