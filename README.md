@@ -5,12 +5,56 @@ A library for using Memcached as a second level distributed cache in Hibernate.
   * Includes support for the Whalin (danga) memcached client
   * Supports entity and query caching.
 
-# Help
-If you have any questions, or just want to drop a line to say it's working great :) use the [google-group](http://groups.google.com/group/hibernate-memcached).
+To use this library in another Maven Project:
+---------------------------------------------
 
-Please note that this is an open source project. I work on it when I can and I implement what I feel like. I am volunteering my own free time for my own amusement.
+Add the following to the pom.xml for releases:
+
+```
+<repositories>
+    <repository>
+        <id>maven.leadoperations.co-release</id>
+        <name>AWS S3 Release Repository</name>
+        <url>http://maven.leadoperations.co/release</url>
+    </repository>
+</repositories>
+```
+
+or for snapshots:
+```
+<repositories>
+    <repository>
+        <id>maven.leadoperations.co-snapshot</id>
+        <name>AWS S3 Snapshot Repository</name>
+        <url>http://maven.leadoperations.co/snapshot</url>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+    </repository>
+</repositories>
+```
+
+Then add the dependency:
+
+```
+<dependency>
+    <groupId>com.cleanenergyexperts</groupId>
+    <artifactId>hibernate-memcached</artifactId>
+    <version>1.5</version>
+</dependency>
+```
+
+Releasing a new version:
+------------------------
+`mvn release:prepare`
+`mvn release:perform`
 
 # Versions
+
+## 1.5
+  * Hibernate 3.6
+  * Spymemcached 2.8.1
+
 ## 1.3
   * [HashCodeKeyStrategy][1] [StringKeyStrategy][2] are now both deprecated.
   * [Sha1KeyStrategy][3] is now the default strategy.
